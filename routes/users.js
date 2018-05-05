@@ -46,24 +46,33 @@ router.route('/register')
       next(error)
     }
   });
-  router.route('/login').get((req, res) => {
-      console.log(req.isAuthenticated());
-      res.render('login', {message : "Неверный пароль!"});
-    });
+  router.route('/login').get(async(req, res, next) => {
+    if(req.cookies['user'])
+    {
+      res.redirect('/');
+    }
+    res.render('login', {message : "", result : undefined});
+  });
 
   router.route('/login').post(async (req, res, next) =>{
     try{
-      if(req.session.user){
-        res.redirect('/login');
+      if(req.cookies['user'])
+      {
+        res.redirect('/');
       }
 
       const user = await User.findOne({ 'email': req.body.email});
       const isOkay = await User.compare(user.password, req.body.password);
-      console.log(isOkay);
-      console.log(req.cookies);
+      // console.log(isOkay);
+      // console.log(req.cookies);
       if(isOkay)
       {
+        console.log(user);
         res.cookie('user', user);
+        req.session.messages = "Login successful";
+        req.session.authorized = true;
+        req.session.user_id = user['_id'];
+        req.session.save();
         req.flash('success', 'Authorization successfully, go ahead and look my site.');
         res.render('index', {result : user});
       }
@@ -78,6 +87,7 @@ router.route('/register')
   });
   router.get('/logout', function(req, res) {
 		res.cookie('user', null, { maxAge: 0, httpOnly: true });
+    req.session.destroy();
 		return res.redirect('/');
 	});
 

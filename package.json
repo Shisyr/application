@@ -1,20 +1,27 @@
 {
-  "name": "site-auth",
+  "name": "auth-test",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "yarn": "1.4.0",
+    "node": "0.12.7"
   },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {},
   "keywords": [],
   "author": "izuchukwu1",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bootstrap": "^4.1.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.9",
+    "ejs-locals": "^1.0.2",
     "express": "^4.15.2",
     "express-ejs-layouts": "^2.4.0",
     "express-handlebars": "^3.0.0",
@@ -23,6 +30,7 @@
     "joi": "^13.0.1",
     "mongoose": "^4.11.12",
     "morgan": "^1.8.1",
+    "nodemon": "^1.17.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   },

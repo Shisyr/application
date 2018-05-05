@@ -1,0 +1,15 @@
+<% layout('/layouts/layout') -%>
+<div class="jumbotron">
+  <h1>Posts</h1>
+    <ol>
+    <% for(var i = 0;i < posts.length;i++){ %>
+      <hr>
+        <li>
+        <p>Author: <%= posts[i]['author_name'] %></p>
+        <p>Name of Post: <%= posts[i]['name_post'] %></p>
+        <p>Description: <%= posts[i]['description'] %></p>
+      </li>
+      <hr>
+    <% } %>
+  </ol>
+</div>

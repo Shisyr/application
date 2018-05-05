@@ -1,8 +1,9 @@
+<% layout('/layouts/layout') -%>
 <div class="jumbotron">
   <h1>Site Authentication!</h1>
-  <% if(result){ %>
-    <p><%= result[0] %></p>
-    <p><%= result[1] %></p>
-  <% } %>
-  <p class="lead"> Welcome aboard.</p>
+    <% if(result != undefined){ %>
+      <p><%= result[0] %></p>
+      <p><%= result[1] %></p>
+    <% } %>
+    <p class="lead"> Welcome aboard.</p>
 </div>

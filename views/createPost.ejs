@@ -1,0 +1,18 @@
+<% layout('/layouts/layout') -%>
+  <form class="form-signin" action="/posts/new" method="POST">
+    <h2 class="form-signin-heading">Please create new Post</h2>
+
+    <label for="inputName" class="sr-only">Name of Post</label>
+    <input type="text" id="inputName" name="name_post" class="form-control" placeholder="Name Post" required autofocus>
+
+    <label for="inputText" class="sr-only">Description:</label>
+    <input type="text" id="inputText" name="description" class="form-control" placeholder="Description" required>
+
+    <input type="hidden" id="hidden" name="author_id" class="form-control" placeholder="author_id" required>
+    <input type="hidden" id="hidden" name="author_email" class="form-control" placeholder="author_email" required>
+    <input type="hidden" id="hidden" name="author_name" class="form-control" placeholder="author_name" required>
+
+    <br/>
+
+    <button class="btn btn-lg btn-default btn-block" type="submit">Submit</button>
+  </form>
